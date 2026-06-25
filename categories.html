@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodExpress Categories</title>
+<link rel="stylesheet" href="categories.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="page-loader">
+    <div class="loader-logo">FoodExpress</div>
+    <div class="loader-text">
+        Preparing delicious experience...
+    </div>
+    <div class="loader-spinner"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h1>FoodExpress 🍔</h1>
+</nav>
+
+<!-- SEARCH -->
+<section class="search-section">
+    <input type="text" id="searchInput" placeholder="Search delicious food...">
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories">
+
+    <div class="category-card active" data-category="all">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800" alt="All">
+        <h3>All</h3>
+    </div>
+
+    <div class="category-card" data-category="pizza">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800" alt="Pizza">
+        <h3>Pizza</h3>
+    </div>
+
+    <div class="category-card" data-category="burger">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800" alt="Burger">
+        <h3>Burger</h3>
+    </div>
+
+    <div class="category-card" data-category="biryani">
+        <img src="https://images.unsplash.com/photo-1633945274309-2c16c9682a8d?q=80&w=800" alt="Biryani">
+        <h3>Biryani</h3>
+    </div>
+
+    <div class="category-card" data-category="drinks">
+        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=800" alt="Drinks">
+        <h3>Drinks</h3>
+    </div>
+
+    <div class="category-card" data-category="dessert">
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=800" alt="Dessert">
+        <h3>Dessert</h3>
+    </div>
+
+</section>
+
+<!-- PRODUCTS -->
+<section>
+    <h2 class="product-heading">Popular Foods 🔥</h2>
+
+    <div class="products-container" id="productsContainer"></div>
+</section>
+
+<script src="categories.js"></script>
+<!-- FLOATING CART -->
+
+<div class="floating-cart" id="floatingCart">
+
+    <div>
+
+        <h3 id="cartCount">
+            0 Items
+        </h3>
+
+        <p id="cartTotal">
+            ₹0
+        </p>
+
+    </div>
+
+    <button>
+        View Cart 🛒
+    </button>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+
+    Item Added To Cart 🍔
+
+</div>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+<script src="firebase.js"></script>
+</body>
+</html>

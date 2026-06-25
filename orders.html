@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Orders</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body class="orders-page">
+  <!-- LOADER -->
+
+<div class="loader">
+
+<div class="loader-content">
+
+<div class="loader-logo">
+🍔
+</div>
+
+<h2>
+Foodie Express
+</h2>
+
+<p>
+Preparing your delicious experience...
+</p>
+
+<div class="loader-spinner">
+</div>
+
+</div>
+
+</div>
+
+<!-- TOP BAR -->
+
+<div class="orders-top">
+
+<button onclick="goBack()" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+
+<div>
+<h2>Live Orders</h2>
+<p>Track your delicious order 😋</p>
+</div>
+
+</div>
+
+<!-- ORDERS CONTAINER -->
+
+<div id="ordersContainer">
+
+<div class="orders-loading">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+<p>Loading Orders...</p>
+
+</div>
+
+</div>
+
+<!-- EMPTY ORDER -->
+
+<div id="emptyOrders"
+class="empty-orders"
+style="display:none;">
+
+<i class="fa-solid fa-bag-shopping"></i>
+
+<h2>No Active Orders</h2>
+
+<p>Your active orders will appear here.</p>
+
+<button onclick="window.location.href='index.html'">
+
+Order Food
+
+</button>
+
+</div>
+
+
+
+<!-- FIREBASE -->
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+<script type="module" src="orders.js"></script>
+
+<!-- ORDER DETAILS POPUP -->
+
+<div class="order-details-popup" id="orderDetailsPopup">
+
+  <div class="order-details-box">
+
+    <button id="closeOrderPopup">
+
+      <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+    <div id="orderPopupContent"></div>
+
+  </div>
+
+</div>
+<div class="bottom-nav">
+
+<a href="index.html" class="nav-item">
+<i class="fa-solid fa-house"></i>
+<span>Home</span>
+</a>
+
+<a href="categories.html" class="nav-item">
+<i class="fa-solid fa-layer-group"></i>
+<span>Categories</span>
+</a>
+
+<a href="orders.html" class="nav-item active-nav">
+<i class="fa-solid fa-bag-shopping"></i>
+<span>Orders</span>
+</a>
+
+<a href="profile.html" class="nav-item">
+<i class="fa-solid fa-user"></i>
+<span>Profile</span>
+</a>
+
+</div>
+</body>
+</html>

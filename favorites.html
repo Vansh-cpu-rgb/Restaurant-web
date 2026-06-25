@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Favorites</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body{
+  background:#000;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:20px;
+}
+
+h2{
+  color:#ff7a00;
+  text-align:center;
+}
+
+.favorite-card{
+  background:#111;
+  border:1px solid #222;
+  border-radius:20px;
+  padding:15px;
+  margin-bottom:20px;
+  box-shadow:0 0 20px rgba(255,122,0,.15);
+  transition:.3s;
+}
+
+.favorite-card:hover{
+  transform:translateY(-5px);
+}
+
+.favorite-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+.favorite-card h3{
+  margin:12px 0 5px;
+  font-size:20px;
+}
+
+.favorite-card p{
+  color:#ff7a00;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.cartBtn, .removeBtn{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.cartBtn{
+  background:#ff7a00;
+  color:white;
+}
+
+.removeBtn{
+  background:#222;
+  color:#ff7a00;
+  border:1px solid #ff7a00;
+}
+
+.back-btn{
+  position:absolute;
+  top:30px;
+  left:20px;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+.favorite-header{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.favorite-header i{
+  font-size:22px;
+  color:#ff7a00;
+  cursor:pointer;
+}
+
+.page-loader{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+.loader-logo{
+  color:#ff7a00;
+  font-size:32px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.loader-text{
+  color:white;
+  margin-bottom:20px;
+}
+
+.loader-spinner{
+  width:50px;
+  height:50px;
+  border:4px solid #333;
+  border-top:4px solid #ff7a00;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  100%{ transform:rotate(360deg); }
+}
+
+.toast{
+  position:fixed;
+  bottom:-100px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#ff7a00;
+  color:white;
+  padding:14px 22px;
+  border-radius:50px;
+  font-weight:bold;
+  transition:.4s;
+  z-index:9999;
+}
+
+.toast.show{
+  bottom:30px;
+}
+
+.empty-box h3{
+  font-size:28px;
+}
+
+.empty-box button:hover{
+  transform:scale(1.05);
+}
+.favDate{
+  color:#888 !important;
+  font-size:13px !important;
+  font-weight:normal !important;
+  margin-top:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-loader">
+  <div class="loader-logo">FoodExpress</div>
+  <div class="loader-text">Loading your favorites...</div>
+  <div class="loader-spinner"></div>
+</div>
+
+<div class="favorite-header">
+  <i class="fa-solid fa-arrow-left" onclick="window.location.href='profile.html'"></i>
+
+  <h2 id="favoriteTitle">❤️ My Favorites</h2>
+</div>
+
+<div id="favoritesContainer"></div>
+
+<div id="toast" class="toast">Added To Cart 🛒</div>
+
+<script type="module" src="favorites-page.js"></script>
+
+</body>
+</html>

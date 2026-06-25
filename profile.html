@@ -1,0 +1,145 @@
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Account</title>
+
+<link rel="stylesheet" href="profile.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+
+<body>
+
+<div class="profile-container">
+
+  <div class="profile-header">
+
+    <img
+      id="profilePhoto"
+      src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+      alt="Profile">
+
+    <h2 id="userName">FoodExpress User</h2>
+
+    <p id="userEmail">user@email.com</p>
+
+    <div class="profile-stats">
+
+      <div>
+        ⭐ Bronze Member
+      </div>
+
+      <div>
+        🎁 0 Points
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="profile-menu">
+
+<div class="menu-item"
+     onclick="window.location.href='myorders.html'">
+
+  <i class="fa-solid fa-box"></i>
+  <span>My Orders</span>
+
+</div>
+
+<div class="menu-item"
+     onclick="window.location.href='favorites.html'">
+
+  <i class="fa-solid fa-heart"></i>
+
+  <span>Favorites</span>
+
+</div>
+
+    <div class="menu-item">
+      <i class="fa-solid fa-location-dot"></i>
+      <span>Saved Addresses</span>
+    </div>
+
+    <div class="menu-item">
+      <i class="fa-solid fa-gift"></i>
+      <span>Rewards</span>
+    </div>
+
+    <div class="menu-item">
+      <i class="fa-solid fa-headset"></i>
+      <span>Support</span>
+    </div>
+
+    <div class="menu-item">
+      <i class="fa-solid fa-gear"></i>
+      <span>Settings</span>
+    </div>
+
+<div id="logoutBtn" class="menu-item logout-item">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Logout</span>
+    </div>
+
+  </div>
+
+</div>
+<script type="module" src="profile.js"></script>
+
+<nav class="bottom-nav">
+
+  <div class="nav-item"
+       onclick="window.location.href='index.html'">
+
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+
+  </div>
+
+  <div class="nav-item"
+       onclick="window.location.href='categories.html'">
+
+    <i class="fa-solid fa-layer-group"></i>
+    <span>Categories</span>
+
+  </div>
+
+  <div class="nav-item"
+       onclick="window.location.href='orders.html'">
+
+    <i class="fa-solid fa-bag-shopping"></i>
+    <span>Orders</span>
+
+  </div>
+
+  <div class="nav-item active-nav">
+
+    <i class="fa-solid fa-user"></i>
+    <span>Profile</span>
+
+  </div>
+
+</nav>
+
+<body>
+
+<div class="page-loader">
+    <div class="loader-logo">FoodExpress</div>
+    <div class="loader-text">
+        Preparing delicious experience...
+    </div>
+    <div class="loader-spinner"></div>
+</div>
+
+<!-- Page Content -->
+
+<script src="profile.js"></script>
+
+</body>
+
+</html>

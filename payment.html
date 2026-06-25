@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8"/>
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0"/>
+
+  <title>Payment</title>
+
+  <link rel="stylesheet"
+    href="style.css"/>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+</head>
+
+<body class="payment-page">
+  <!-- LOADER -->
+
+<div class="loader">
+
+<div class="loader-content">
+
+<div class="loader-logo">
+🍔
+</div>
+
+<h2>
+Foodie Express
+</h2>
+
+<p>
+Preparing your delicious experience...
+</p>
+
+<div class="loader-spinner">
+</div>
+
+</div>
+
+</div>
+
+  <!-- TOP -->
+
+  <div class="payment-top">
+
+    <button onclick="goBack()" class="back-btn">
+
+      <i class="fa-solid fa-arrow-left"></i>
+
+    </button>
+
+    <div>
+
+      <h2>Payment Method</h2>
+
+      <p>Select your payment option 💳</p>
+
+    </div>
+
+  </div>
+
+  <!-- TOTAL CARD -->
+
+  <div class="payment-total-card">
+
+    <p>Total Payable</p>
+
+    <h1 id="paymentTotal">
+
+      ₹0
+
+    </h1>
+
+  </div>
+
+  <!-- PAYMENT OPTIONS -->
+
+  <div class="payment-options-box">
+
+    <!-- UPI -->
+
+    <div class="payment-option active-payment"
+      onclick="selectPayment(this)">
+
+      <div class="payment-left">
+
+        <i class="fa-brands fa-google-pay"></i>
+
+        <div>
+
+          <h3>UPI Payment</h3>
+
+          <p>Pay using any UPI app</p>
+
+        </div>
+
+      </div>
+
+      <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <!-- CARD -->
+
+    <div class="payment-option"
+      onclick="selectPayment(this)">
+
+      <div class="payment-left">
+
+        <i class="fa-regular fa-credit-card"></i>
+
+        <div>
+
+          <h3>Debit / Credit Card</h3>
+
+          <p>Visa, Mastercard supported</p>
+
+        </div>
+
+      </div>
+
+      <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <!-- COD -->
+
+    <div class="payment-option"
+      onclick="selectPayment(this)">
+
+      <div class="payment-left">
+
+        <i class="fa-solid fa-money-bill-wave"></i>
+
+        <div>
+
+          <h3>Cash On Delivery</h3>
+
+          <p>Pay after receiving order</p>
+
+        </div>
+
+      </div>
+
+      <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <!-- WALLET -->
+
+    <div class="payment-option"
+      onclick="selectPayment(this)">
+
+      <div class="payment-left">
+
+        <i class="fa-solid fa-wallet"></i>
+
+        <div>
+
+          <h3>Wallet</h3>
+
+          <p>Paytm, PhonePe wallet etc.</p>
+
+        </div>
+
+      </div>
+
+      <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <!-- NET BANKING -->
+
+    <div class="payment-option"
+      onclick="selectPayment(this)">
+
+      <div class="payment-left">
+
+        <i class="fa-solid fa-building-columns"></i>
+
+        <div>
+
+          <h3>Net Banking</h3>
+
+          <p>All major banks supported</p>
+
+        </div>
+
+      </div>
+
+      <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+  </div>
+
+  <!-- SECURE -->
+
+  <div class="secure-payment">
+
+    <i class="fa-solid fa-shield-halved"></i>
+
+    <span>100% Secure Payments</span>
+
+  </div>
+
+  <!-- PAY BUTTON -->
+
+  <div class="payment-bottom">
+
+<button id="payBtn" onclick="placeOrder()">
+
+  <span id="payBtnText">
+
+    Pay & Place Order
+
+  </span>
+
+</button>
+
+  </div>
+
+  <!-- SUCCESS POPUP -->
+
+<div class="success-popup" id="successPopup">
+
+  <div class="success-box">
+
+    <div class="success-circle">
+
+      <i class="fa-solid fa-check"></i>
+
+    </div>
+
+    <h2>Order Placed 😎🔥</h2>
+
+    <p>Your delicious food is on the way!</p>
+
+  </div>
+
+</div>
+
+<!-- SUCCESS SOUND -->
+
+<audio id="successSound">
+
+  <source
+    src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"
+    type="audio/mpeg"
+  >
+
+</audio>
+
+<body>
+
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+<script type="module" src="payment.js"></script>
+</body>
+
+</html>

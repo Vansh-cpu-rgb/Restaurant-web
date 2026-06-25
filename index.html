@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Foodie Express</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- LOADER -->
+
+<div class="loader">
+
+<div class="loader-content">
+
+<div class="loader-logo">
+🍔
+</div>
+
+<h2>
+Foodie Express
+</h2>
+
+<p>
+Preparing your delicious experience...
+</p>
+
+<div class="loader-spinner">
+</div>
+
+</div>
+
+</div>
+
+<!-- APP -->
+
+<div class="app"
+style="display:none;">
+
+<!-- LOGIN OVERLAY -->
+
+<div id="loginOverlay">
+
+<div class="login-box">
+
+<h2>
+Welcome Back 👋
+</h2>
+
+<p>
+Login to continue ordering food
+</p>
+
+<input
+type="email"
+id="email"
+placeholder="Enter Email">
+
+<div class="password-box">
+
+<input
+type="password"
+id="password"
+placeholder="Password">
+
+<i id="togglePassword"
+class="fa-solid fa-eye">
+</i>
+
+</div>
+
+<button id="loginBtn">
+
+Login
+
+</button>
+
+<button id="createAccount">
+
+Create Account
+
+</button>
+
+<div class="or-line">
+
+<span>OR</span>
+
+</div>
+
+<button id="googleLogin">
+
+<i class="fa-brands fa-google">
+</i>
+
+Continue With Google
+
+</button>
+
+</div>
+
+</div>
+
+<!-- HEADER -->
+
+<header class="top-header">
+
+<div class="logo">
+
+🍔 Foodie Express
+
+</div>
+
+<div class="header-icons">
+
+<i class="fa-solid fa-bell">
+</i>
+
+<i class="fa-solid fa-user"
+onclick="window.location.href='profile.html'">
+</i>
+
+</div>
+
+</header>
+
+<!-- SEARCH -->
+
+<div class="search-container">
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass">
+</i>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search food...">
+
+</div>
+
+</div>
+
+<!-- HERO BANNER -->
+
+<section class="hero-banner">
+
+<div class="hero-left">
+
+<span class="offer-tag">
+
+🔥 50% OFF
+
+</span>
+
+<h1>
+
+Delicious Food
+Delivered Fast
+
+</h1>
+
+<p>
+
+Fresh Food • Fast Delivery • Best Prices
+
+</p>
+
+<button>
+
+Order Now
+
+</button>
+
+</div>
+
+<div class="hero-right">
+
+<img
+src="https://images.unsplash.com/photo-1513104890138-7c749659a591">
+
+</div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<div class="categories">
+
+<button
+class="category-btn active-category"
+data-category="All">
+
+All
+
+</button>
+
+<button
+class="category-btn"
+data-category="Pizza">
+
+Pizza
+
+</button>
+
+<button
+class="category-btn"
+data-category="Burger">
+
+Burger
+
+</button>
+
+<button
+class="category-btn"
+data-category="Pasta">
+
+Pasta
+
+</button>
+
+<button
+class="category-btn"
+data-category="Biryani">
+
+Biryani
+
+</button>
+
+<button
+class="category-btn"
+data-category="Drinks">
+
+Drinks
+
+</button>
+
+<button
+class="category-btn"
+data-category="Dessert">
+
+Dessert
+
+</button>
+
+</div>
+
+<!-- PRODUCTS -->
+
+<div id="products"
+class="products-grid">
+
+<!-- Firebase Products Render Here -->
+
+</div>
+<!-- PRODUCT POPUP -->
+
+<div id="popup" class="product-popup">
+
+<div class="popup-content">
+
+<button
+class="close-popup"
+onclick="closePopup()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+<img
+id="popupImg"
+class="popup-image"
+src="">
+
+<div class="popup-details">
+
+<h2 id="popupTitle">
+Product Name
+</h2>
+
+<p id="popupDesc">
+Description
+</p>
+
+<!-- REVIEWS SECTION -->
+
+<div class="review-section">
+
+<div class="review-header">
+
+<span>
+
+⭐
+<span id="productAverageRating">
+
+0.0
+
+</span>
+
+</span>
+
+<span>
+
+(
+<span id="productReviewCount">
+
+0
+
+</span>
+
+Reviews)
+
+</span>
+
+</div>
+
+<div id="productReviews">
+
+Loading Reviews...
+
+</div>
+
+<button
+id="viewAllReviewsBtn"
+class="view-reviews-btn">
+
+View All Reviews
+
+</button>
+
+</div>
+
+<div class="popup-bottom">
+
+<div
+id="popupPrice"
+class="popup-price">
+
+₹0
+
+</div>
+
+<button
+id="popupBtn"
+class="add-cart-btn">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ALL REVIEWS POPUP -->
+
+<div
+id="allReviewsPopup"
+class="all-reviews-popup">
+
+<div class="all-reviews-content">
+
+<div class="all-review-top">
+
+<h2>
+Customer Reviews
+</h2>
+
+<button
+id="closeAllReviews">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+<div id="allReviewsList">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FLOATING CART -->
+
+<div
+id="floatingCart"
+class="floating-cart"
+onclick="openCart()"
+style="display:none;">
+
+<div class="cart-left">
+
+<i class="fa-solid fa-bag-shopping"></i>
+
+<span>
+
+₹<span id="totalPrice">
+
+0
+
+</span>
+
+</span>
+
+</div>
+
+<div class="cart-right">
+
+View Cart
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</div>
+
+</div>
+
+<!-- BOTTOM NAVIGATION -->
+
+<nav class="bottom-nav">
+
+<div
+class="nav-item active-nav"
+onclick="window.location.href='index.html'">
+
+<i class="fa-solid fa-house"></i>p
+
+<span>Home</span>
+
+</div>
+
+<div
+class="nav-item"
+onclick="window.location.href='categories.html'">
+
+<i class="fa-solid fa-layer-group"></i>
+
+<span>Categories</span>
+
+</div>
+
+<div
+class="nav-item"
+onclick="window.location.href='orders.html'">
+
+<i class="fa-solid fa-bag-shopping"></i>
+
+<span>Orders</span>
+
+</div>
+
+<div
+class="nav-item"
+onclick="window.location.href='profile.html'">
+
+<i class="fa-solid fa-user"></i>
+
+<span>Profile</span>
+
+</div>
+
+</nav>
+
+</div>
+
+<!-- SCRIPTS -->
+
+<script type="module" src="firebase.js"></script>
+
+<script src="script.js"></script>
+
+<script type="module" src="reviews.js"></script>
+
+<script type="module" src="products-fetch.js"></script>
+
+<script type="module" src="login.js"></script>
+
+</body>
+</html>

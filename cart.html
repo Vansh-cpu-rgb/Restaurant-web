@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Cart - Foodie Express</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+</head>
+
+<body class="cart-page">
+    <!-- LOADER -->
+
+<div class="loader">
+
+<div class="loader-content">
+
+<div class="loader-logo">
+🍔
+</div>
+
+<h2>
+Foodie Express
+</h2>
+
+<p>
+Preparing your delicious experience...
+</p>
+
+<div class="loader-spinner">
+</div>
+
+</div>
+
+</div>
+
+  <!-- TOP BAR -->
+
+  <div class="cart-top">
+
+    <button onclick="goBack()" class="back-btn">
+
+      <i class="fa-solid fa-arrow-left"></i>
+
+    </button>
+
+    <div>
+
+      <h2>Your Cart</h2>
+
+      <p>Review your delicious order 😋</p>
+
+    </div>
+
+  </div>
+
+  <!-- CART ITEMS -->
+
+  <div id="cartItems" class="cart-items"></div>
+
+  <!-- COUPON -->
+
+  <div class="coupon-box">
+
+    <div class="coupon-left">
+
+      <i class="fa-solid fa-ticket"></i>
+
+      <div>
+
+        <h3>Apply Coupon</h3>
+
+        <p>Save more on your order</p>
+
+      </div>
+
+    </div>
+
+    <button onclick="applyCoupon()">
+      Apply
+    </button>
+
+  </div>
+
+  <!-- BILL -->
+
+  <div class="bill-box">
+
+    <h2>Bill Details</h2>
+
+    <div class="bill-row">
+
+      <span>Item Total</span>
+
+      <span id="subtotal">₹0</span>
+
+    </div>
+
+    <div class="bill-row">
+
+      <span>Delivery Fee</span>
+
+      <span>₹40</span>
+
+    </div>
+
+    <div class="bill-row">
+
+      <span>Platform Fee</span>
+
+      <span>₹10</span>
+
+    </div>
+
+    <div class="bill-row total-row">
+
+      <span>Grand Total</span>
+
+      <span id="grandTotal">₹0</span>
+
+    </div>
+
+  </div>
+
+  <!-- ADDRESS SECTION -->
+
+  <div class="address-preview">
+
+    <div>
+
+      <h3>Deliver To</h3>
+
+      <p>Add your address</p>
+
+    </div>
+
+    <button onclick="goToAddress()">
+
+      Add Address
+
+    </button>
+
+  </div>
+
+  <!-- FIXED PAYMENT BAR -->
+
+  <div class="bottom-payment-bar">
+
+    <div>
+
+      <p>Total Pay</p>
+
+      <h2 id="bottomTotal">₹0</h2>
+
+    </div>
+
+    <button onclick="goToAddress()">
+
+      Proceed
+
+    </button>
+
+  </div>
+
+  <script src="cart.js"></script>
+
+<!-- Firebase SDK -->
+
+</body>
+</html>
