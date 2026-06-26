@@ -4,7 +4,11 @@ import {
   collection,
   query,
   where,
-  onSnapshot
+  onSnapshot,
+  updateDoc,
+  doc,
+  addDoc,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // BACK BUTTON
@@ -74,16 +78,44 @@ function loadOrders(userId){
     snapshot.forEach((doc)=>{
 
       const order = doc.data();
+      if (
+  order.status === "Delivered" &&
+  order.reviewSubmitted !== true &&
+  !currentReviewOrder
+) {
+
+  order.id = doc.id;
+
+  setTimeout(() => {
+    openReviewPopup(order);
+  }, 500);
+
+}
 
       // ONLY ACTIVE ORDERS
 
-      if(
-        order.status !== "Pending" &&
-        order.status !== "Preparing" &&
-        order.status !== "Out For Delivery"
-      ){
-        return;
-      }
+// ONLY ACTIVE ORDERS
+
+const activeStatuses = [
+  "Pending",
+  "Accepted",
+  "Preparing",
+  "Out For Delivery"
+];
+
+if(
+  order.status === "Delivered" &&
+  order.reviewSubmitted === true
+){
+  return;
+}
+
+if(
+  !activeStatuses.includes(order.status) &&
+  order.status !== "Delivered"
+){
+  return;
+}
 
       activeOrders++;
 
@@ -207,13 +239,17 @@ snapshot.forEach((doc)=>{
 
   const order = doc.data();
 
-  if(
-    order.status !== "Pending" &&
-    order.status !== "Preparing" &&
-    order.status !== "Out For Delivery"
-  ){
-    return;
-  }
+const activeStatuses = [
+  "Pending",
+  "Accepted",
+  "Preparing",
+  "Out For Delivery",
+  "Delivered"
+];
+
+if(!activeStatuses.includes(order.status)){
+  return;
+}
 
   order.id = doc.id;
 
@@ -312,3 +348,291 @@ document
 
 };
 window.openOrderDetails = openOrderDetails;
+// =========================
+// REVIEW SYSTEM VARIABLES
+// =========================
+
+let currentReviewOrder = null;
+
+const reviewPopup =
+document.getElementById("reviewPopup");
+
+const reviewProducts =
+document.getElementById("reviewProducts");
+
+const riderStars =
+document.querySelector(".rider-stars");
+
+const riderComment =
+document.getElementById("riderComment");
+// =========================
+// OPEN REVIEW POPUP
+// =========================
+
+function openReviewPopup(order){
+
+currentReviewOrder = order;
+
+reviewProducts.innerHTML = "";
+reviewProducts.innerHTML = `
+
+<div class="review-order-header">
+
+<img
+src="${order.items[0].image}"
+class="review-main-image">
+
+<div>
+
+<h2>Order Delivered 🎉</h2>
+
+<p>
+Your food has been delivered successfully.
+Please rate every item.
+</p>
+
+<div class="review-order-id">
+
+Order #${order.id.slice(0,8)}
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+order.items.forEach((item,index)=>{
+
+const product = document.createElement("div");
+
+product.className = "review-product";
+
+product.innerHTML = `
+
+<div class="review-product-top">
+
+<img src="${item.image}">
+
+<div>
+
+<h3>${item.name}</h3>
+
+<div class="review-price">
+
+₹${item.price}
+
+<span>
+
+× ${item.qty}
+
+</span>
+
+</div>
+
+<div class="rating-label">
+
+Tap stars to rate
+
+</div>
+
+</div>
+
+</div>
+
+<div class="review-stars" id="stars-${index}"></div>
+
+<textarea
+id="comment-${index}"
+placeholder="Write your review..."></textarea>
+
+`;
+
+reviewProducts.appendChild(product);
+
+const stars =
+product.querySelector(".review-stars");
+
+for(let i=1;i<=5;i++){
+
+const star =
+document.createElement("span");
+
+star.className = "review-star";
+star.innerHTML = '<i class="fa-solid fa-star"></i>';
+
+
+star.onclick = ()=>{
+
+stars.setAttribute("data-rating",i);
+
+stars.querySelectorAll(".review-star")
+.forEach((s,idx)=>{
+
+if(idx < i){
+
+s.classList.add("active");
+
+}else{
+
+s.classList.remove("active");
+
+}
+
+});
+
+};
+
+stars.appendChild(star);
+
+}
+
+});
+
+// Rider Stars
+
+riderStars.innerHTML = "";
+
+for(let i=1;i<=5;i++){
+
+const star =
+document.createElement("span");
+
+star.className = "review-star";
+star.innerHTML = '<i class="fa-solid fa-star"></i>';
+
+star.onclick = ()=>{
+
+riderStars.setAttribute("data-rating",i);
+
+riderStars.querySelectorAll(".review-star")
+.forEach((s,idx)=>{
+
+if(idx < i){
+
+s.classList.add("active");
+
+}else{
+
+s.classList.remove("active");
+
+}
+
+});
+
+};
+
+riderStars.appendChild(star);
+
+}
+
+reviewPopup.style.display = "flex";
+
+}
+// =========================
+// SUBMIT REVIEW
+// =========================
+
+document.getElementById("submitReviewBtn").onclick = async ()=>{
+
+if(!currentReviewOrder) return;
+
+// Save every product review separately
+
+for(let index=0; index<currentReviewOrder.items.length; index++){
+
+const item = currentReviewOrder.items[index];
+
+const rating = Number(
+document
+.getElementById(`stars-${index}`)
+?.getAttribute("data-rating") || 0
+);
+
+const review =
+document
+.getElementById(`comment-${index}`)
+?.value || "";
+
+await addDoc(
+
+collection(db,"reviews"),
+
+{
+
+productId:item.id,
+
+productName:item.name,
+
+foodRating:rating,
+
+review:review,
+
+image:item.image,
+
+orderId:currentReviewOrder.id,
+
+userId:auth.currentUser.uid,
+
+userName:auth.currentUser.displayName || "Customer",
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+}
+
+// Only mark review submitted
+
+await updateDoc(
+
+doc(db,"orders",currentReviewOrder.id),
+
+{
+
+reviewSubmitted:true
+
+}
+
+);
+
+reviewPopup.style.display="none";
+
+currentReviewOrder=null;
+
+document
+.getElementById("reviewSuccess")
+.classList.add("show");
+
+setTimeout(()=>{
+
+document
+.getElementById("reviewSuccess")
+.classList.remove("show");
+
+},1800);
+
+};
+document.getElementById("skipReviewBtn").onclick = async ()=>{
+
+if(!currentReviewOrder) return;
+
+await updateDoc(
+
+doc(db,"orders",currentReviewOrder.id),
+
+{
+
+reviewSubmitted:true
+}
+
+);
+
+reviewPopup.style.display="none";
+
+currentReviewOrder=null;
+
+};

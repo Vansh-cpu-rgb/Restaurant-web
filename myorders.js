@@ -56,6 +56,12 @@ if(snapshot.empty){
 snapshot.forEach((docSnap)=>{
 
 const order = docSnap.data();
+if(
+  order.status !== "Delivered" ||
+  order.reviewSubmitted !== true
+){
+  return;
+}
 
 const card =
   document.createElement("div");
