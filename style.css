@@ -908,6 +908,7 @@ font-size:26px;
 }
 
 .cart-item{
+  padding:0 12px;
   background:#181818;
   border-radius:18px;
   padding:12px;
@@ -915,6 +916,14 @@ font-size:26px;
   display:flex;
   gap:12px;
   align-items:center;
+  transition:.25s ease;
+  .cart-item:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+
+}
 }
 
 .cart-item img{
@@ -922,6 +931,12 @@ font-size:26px;
   height:95px;
   border-radius:14px;
   object-fit:cover;
+  transition:.3s;
+  .cart-item:hover img{
+
+    transform:scale(1.05);
+
+}
 }
 
 .cart-item-info{
@@ -968,6 +983,15 @@ font-size:26px;
   color:#fff;
   font-size:18px;
   font-weight:700;
+  transition:all .25s ease;
+box-shadow:0 4px 12px rgba(255,107,0,.35);
+.quantity-box button:hover{
+    transform:translateY(-2px);
+}
+
+.quantity-box button:active{
+    transform:scale(.90);
+}
 }
 
 .quantity-box span{
@@ -1031,10 +1055,18 @@ font-size:26px;
 /* BILL */
 
 .bill-box{
-  margin:15px 12px;
-  background:#181818;
-  border-radius:18px;
-  padding:18px;
+    position:sticky;
+    bottom:85px;
+
+    margin:15px 12px;
+
+    background:#181818;
+    border-radius:18px;
+    padding:18px;
+
+    border:1px solid #2a2a2a;
+
+    z-index:100;
 }
 
 .bill-box h2{

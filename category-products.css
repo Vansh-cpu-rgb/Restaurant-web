@@ -1,0 +1,1234 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#0f0f0f;
+
+color:#fff;
+
+padding-bottom:100px;
+
+overflow-x:hidden;
+
+}
+
+/* ==========================
+   LOADER
+========================== */
+
+.page-loader{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:#0f0f0f;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:99999;
+
+transition:.4s;
+
+}
+
+.loader-spinner{
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+border:5px solid rgba(255,255,255,.15);
+
+border-top:5px solid #ff6b00;
+
+animation:spin 1s linear infinite;
+
+margin-bottom:18px;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.top-header{
+
+position:sticky;
+
+top:0;
+
+z-index:500;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:18px 20px;
+
+background:#151515;
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+backdrop-filter:blur(20px);
+
+}
+
+.back-btn,
+
+.cart-btn{
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+border-radius:50%;
+
+background:#232323;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.back-btn:hover,
+
+.cart-btn:hover{
+
+background:#ff6b00;
+
+}
+
+#categoryTitle{
+
+font-size:22px;
+
+font-weight:700;
+
+color:#fff;
+
+}
+
+/* ==========================
+   SEARCH
+========================== */
+
+.search-section{
+
+padding:18px;
+
+}
+
+.search-box{
+
+display:flex;
+
+align-items:center;
+
+background:#1d1d1d;
+
+padding:15px;
+
+border-radius:18px;
+
+}
+
+.search-box i{
+
+color:#888;
+
+margin-right:10px;
+
+}
+
+.search-box input{
+
+flex:1;
+
+border:none;
+
+outline:none;
+
+background:none;
+
+color:white;
+
+font-size:15px;
+
+}
+
+.search-box input::placeholder{
+
+color:#777;
+
+}
+
+/* ==========================
+   PRODUCT GRID
+========================== */
+
+.products-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:14px;
+
+padding:14px;
+
+}
+/* ==========================
+   PRODUCT CARD
+========================== */
+
+.product-card{
+
+background:#1a1a1a;
+
+border-radius:24px;
+
+overflow:hidden;
+
+position:relative;
+
+border:1px solid rgba(255,255,255,.06);
+
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.product-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 18px 40px rgba(255,107,0,.18);
+
+border-color:rgba(255,107,0,.35);
+
+}
+
+.product-card img{
+
+width:100%;
+
+height:140px;
+
+object-fit:cover;
+
+display:block;
+
+transition:.4s;
+
+border-radius:16px 16px 0 0;
+
+}
+
+.product-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+/* ==========================
+   OFFER TAG
+========================== */
+
+.offer-tag{
+
+position:absolute;
+
+top:14px;
+
+left:14px;
+
+background:linear-gradient(
+135deg,
+#ff6b00,
+#ff3d00);
+
+color:white;
+
+padding:6px 14px;
+
+border-radius:30px;
+
+font-size:12px;
+
+font-weight:600;
+
+box-shadow:0 6px 18px rgba(255,107,0,.4);
+
+z-index:5;
+
+}
+
+/* ==========================
+   PRODUCT INFO
+========================== */
+
+.product-info{
+
+padding:12px;
+
+}
+
+.product-info h3{
+
+font-size:16px;
+
+font-weight:600;
+
+margin-bottom:6px;
+
+color:white;
+
+}
+
+.product-desc{
+
+font-size:14px;
+
+line-height:22px;
+
+color:#bdbdbd;
+
+margin-bottom:15px;
+
+min-height:44px;
+
+}
+
+/* ==========================
+   PRICE + RATING
+========================== */
+
+.price-rating{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:18px;
+
+}
+
+.product-price{
+
+font-size:18px;
+
+font-weight:700;
+
+color:#ff6b00;
+
+}
+
+.product-rating{
+
+background:#242424;
+
+padding:7px 12px;
+
+border-radius:30px;
+
+font-size:14px;
+
+font-weight:600;
+
+color:#ffd54f;
+
+}
+
+/* ==========================
+   ADD TO CART BUTTON
+========================== */
+
+.add-cart-btn{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:16px;
+
+background:linear-gradient(
+135deg,
+#ff6b00,
+#ff3d00);
+
+color:white;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0 8px 20px rgba(255,107,0,.35);
+
+}
+
+.add-cart-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 12px 28px rgba(255,107,0,.45);
+
+}
+
+.add-cart-btn:active{
+
+transform:scale(.97);
+
+}
+
+/* ==========================
+   FAVORITE BUTTON
+========================== */
+
+.favorite-btn{
+
+position:absolute;
+
+top:14px;
+
+right:14px;
+
+width:42px;
+
+height:42px;
+
+border:none;
+
+border-radius:50%;
+
+background:rgba(20,20,20,.75);
+
+backdrop-filter:blur(10px);
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+z-index:5;
+
+}
+
+.favorite-btn:hover{
+
+background:#ff6b00;
+
+transform:scale(1.08);
+
+}
+
+/* ==========================
+   PRODUCT IMAGE OVERLAY
+========================== */
+
+.product-card::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+right:0;
+
+bottom:0;
+
+height:90px;
+
+background:linear-gradient(
+
+transparent,
+
+rgba(0,0,0,.35)
+
+);
+
+pointer-events:none;
+
+}
+/* ==========================
+   PRODUCT POPUP
+========================== */
+
+.product-popup{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.75);
+
+backdrop-filter:blur(8px);
+
+display:none;
+
+justify-content:center;
+
+align-items:flex-end;
+
+z-index:9999;
+
+animation:popupFade .3s ease;
+
+}
+
+@keyframes popupFade{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+.popup-content{
+
+width:100%;
+
+max-width:520px;
+
+background:#181818;
+
+border-radius:28px 28px 0 0;
+
+padding:22px;
+
+position:relative;
+
+animation:popupUp .35s ease;
+
+max-height:90vh;
+
+overflow-y:auto;
+
+}
+
+@keyframes popupUp{
+
+from{
+
+transform:translateY(100%);
+
+}
+
+to{
+
+transform:translateY(0);
+
+}
+
+}
+
+.close-popup{
+
+position:absolute;
+
+top:18px;
+
+right:18px;
+
+width:42px;
+
+height:42px;
+
+border:none;
+
+border-radius:50%;
+
+background:#252525;
+
+color:white;
+
+cursor:pointer;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+.close-popup:hover{
+
+background:#ff6b00;
+
+}
+
+.popup-content img{
+
+width:100%;
+
+height:240px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+margin-bottom:18px;
+
+}
+
+.popup-content h2{
+
+font-size:25px;
+
+margin-bottom:10px;
+
+}
+
+.popup-content p{
+
+color:#bdbdbd;
+
+line-height:24px;
+
+margin-bottom:18px;
+
+}
+
+.popup-price{
+
+font-size:28px;
+
+font-weight:700;
+
+color:#ff6b00;
+
+margin-bottom:18px;
+
+}
+
+.popup-content .add-cart-btn{
+
+width:100%;
+
+}
+
+/* ==========================
+   REVIEW SECTION
+========================== */
+
+.review-section{
+
+margin:25px 0;
+
+padding:18px;
+
+background:#202020;
+
+border-radius:18px;
+
+}
+
+.review-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:15px;
+
+font-weight:600;
+
+}
+
+.review-card{
+
+background:#2a2a2a;
+
+padding:14px;
+
+border-radius:14px;
+
+margin-bottom:12px;
+
+}
+
+.review-card p{
+
+margin:8px 0;
+
+font-size:14px;
+
+line-height:22px;
+
+}
+
+.review-card small{
+
+color:#999;
+
+}
+
+/* ==========================
+   FLOATING CART
+========================== */
+
+.floating-cart{
+
+position:fixed;
+
+left:50%;
+
+bottom:90px;
+
+transform:translateX(-50%);
+
+width:92%;
+
+max-width:520px;
+
+background:linear-gradient(135deg,#ff6b00,#ff3d00);
+
+padding:16px 20px;
+
+border-radius:22px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+box-shadow:0 15px 35px rgba(255,107,0,.35);
+
+z-index:999;
+
+}
+
+.floating-cart h3{
+
+font-size:18px;
+
+}
+
+.floating-cart p{
+
+font-size:14px;
+
+margin-top:3px;
+
+color:#ffe5d5;
+
+}
+
+.floating-cart button{
+
+border:none;
+
+background:white;
+
+color:#ff5a00;
+
+padding:12px 20px;
+
+border-radius:14px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.floating-cart button:hover{
+
+transform:scale(1.05);
+
+}
+
+/* ==========================
+   TOAST
+========================== */
+
+.toast{
+
+position:fixed;
+
+top:25px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+background:#1f1f1f;
+
+color:white;
+
+padding:14px 22px;
+
+border-radius:40px;
+
+opacity:0;
+
+pointer-events:none;
+
+transition:.3s;
+
+z-index:99999;
+
+border:1px solid rgba(255,107,0,.35);
+
+}
+
+.toast.show{
+
+opacity:1;
+
+top:40px;
+
+}
+
+/* ==========================
+   EMPTY PRODUCTS
+========================== */
+
+.empty-products{
+
+grid-column:1/-1;
+
+text-align:center;
+
+padding:70px 20px;
+
+opacity:.7;
+
+}
+
+.empty-products i{
+
+font-size:70px;
+
+color:#ff6b00;
+
+margin-bottom:20px;
+
+}
+
+.empty-products h2{
+
+margin-bottom:10px;
+
+}
+
+.empty-products p{
+
+color:#999;
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+.products-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+}
+.popup-content{
+
+max-height:92vh;
+
+}
+
+.popup-content img{
+
+height:220px;
+
+}
+
+.floating-cart{
+
+width:95%;
+
+}
+
+}
+/* ==========================
+   BOTTOM NAVIGATION
+========================== */
+
+.bottom-nav{
+
+position:fixed;
+
+left:0;
+
+bottom:0;
+
+width:100%;
+
+height:72px;
+
+background:#181818;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+z-index:1000;
+
+backdrop-filter:blur(20px);
+
+}
+
+.nav-item{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:13px;
+
+color:#9b9b9b;
+
+cursor:pointer;
+
+transition:.3s;
+
+gap:4px;
+
+}
+
+.nav-item i{
+
+font-size:20px;
+
+transition:.3s;
+
+}
+
+.nav-item:hover{
+
+color:#ff6b00;
+
+}
+
+.nav-item:hover i{
+
+transform:translateY(-3px);
+
+}
+
+.active-nav{
+
+color:#ff6b00;
+
+}
+
+.active-nav i{
+
+transform:scale(1.15);
+
+}
+
+/* ==========================
+   SKELETON LOADING
+========================== */
+
+.skeleton{
+
+background:linear-gradient(
+90deg,
+#1b1b1b 25%,
+#2b2b2b 50%,
+#1b1b1b 75%
+);
+
+background-size:400% 100%;
+
+animation:skeletonLoading 1.2s infinite;
+
+border-radius:18px;
+
+}
+
+@keyframes skeletonLoading{
+
+0%{
+
+background-position:100% 0;
+
+}
+
+100%{
+
+background-position:-100% 0;
+
+}
+
+}
+
+/* ==========================
+   IMAGE LOADING EFFECT
+========================== */
+
+.product-card img{
+
+width:100%;
+height:210px;
+object-fit:cover;
+display:block;
+
+opacity:1;
+
+transition:transform .4s;
+
+}
+
+.product-card img.loaded{
+
+opacity:1;
+
+}
+
+/* ==========================
+   RIPPLE EFFECT
+========================== */
+
+.add-cart-btn{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.add-cart-btn::after{
+
+content:"";
+
+position:absolute;
+
+width:0;
+
+height:0;
+
+background:rgba(255,255,255,.25);
+
+border-radius:50%;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+transition:.45s;
+
+}
+
+.add-cart-btn:active::after{
+
+width:280px;
+
+height:280px;
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#141414;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#ff6b00;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#ff8533;
+
+}
+
+/* ==========================
+   FADE ANIMATION
+========================== */
+
+.fade-in{
+
+animation:fadeIn .45s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================
+   GLASS EFFECT
+========================== */
+
+.glass{
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ==========================
+   UTILITIES
+========================== */
+
+.hidden{
+
+display:none !important;
+
+}
+
+.text-center{
+
+text-align:center;
+
+}
+
+.mt-10{
+
+margin-top:10px;
+
+}
+
+.mt-20{
+
+margin-top:20px;
+
+}
+
+.mb-20{
+
+margin-bottom:20px;
+
+}
+
+/* ==========================
+   SAFE AREA (iPhone)
+========================== */
+
+body{
+
+padding-bottom:calc(90px + env(safe-area-inset-bottom));
+
+}

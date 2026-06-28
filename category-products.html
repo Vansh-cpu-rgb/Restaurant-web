@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Category Products</title>
+
+<link rel="stylesheet"
+href="category-products.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- PAGE LOADER -->
+
+<div class="page-loader">
+
+<div class="loader-spinner"></div>
+
+<p>Loading Products...</p>
+
+</div>
+
+<!-- HEADER -->
+
+<header class="top-header">
+
+<button class="back-btn"
+onclick="history.back()">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+<h2 id="categoryTitle">
+
+Category
+
+</h2>
+
+<button class="cart-btn"
+onclick="window.location.href='cart.html'">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</button>
+
+</header>
+
+<!-- SEARCH -->
+
+<div class="search-section">
+
+<div class="search-box">
+
+<i class="fa-solid fa-search"></i>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search Food...">
+
+</div>
+
+</div>
+
+<!-- PRODUCTS -->
+
+<section
+id="productsContainer"
+class="products-grid">
+
+<!-- Firebase Products -->
+
+</section>
+
+<!-- FLOATING CART -->
+
+<div
+id="floatingCart"
+class="floating-cart"
+onclick="window.location.href='cart.html'"
+style="display:none;">
+
+<div class="cart-left">
+
+<i class="fa-solid fa-bag-shopping"></i>
+
+<span>
+
+₹<span id="totalPrice">
+
+0
+
+</span>
+
+</span>
+
+</div>
+
+<div class="cart-right">
+
+View Cart
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</div>
+
+</div>
+
+<!-- PRODUCT POPUP -->
+
+<div
+id="popup"
+class="product-popup">
+
+<div class="popup-content">
+
+<button
+class="close-popup"
+onclick="closePopup()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+<img
+id="popupImg"
+src="">
+
+<h2 id="popupTitle">
+
+</h2>
+
+<p id="popupDesc">
+
+</p>
+
+<div class="popup-price">
+
+₹<span id="popupPrice">
+
+0
+
+</span>
+
+</div>
+
+<div class="review-section">
+
+    <div class="review-header">
+
+        <h3>
+
+            Reviews
+
+        </h3>
+
+        <div>
+
+            ⭐
+
+            <span id="productAverageRating">
+
+                0.0
+
+            </span>
+
+            (
+
+            <span id="productReviewCount">
+
+                0
+
+            </span>
+
+            )
+
+        </div>
+
+    </div>
+
+    <div id="productReviews">
+
+        Loading...
+
+    </div>
+
+</div>
+
+<button
+id="popupBtn"
+class="add-cart-btn">
+
+Add To Cart 🛒
+
+</button>
+
+</div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+<div class="nav-item"
+onclick="window.location.href='index.html'">
+
+<i class="fa-solid fa-house"></i>
+
+<span>Home</span>
+
+</div>
+
+<div class="nav-item active-nav">
+
+<i class="fa-solid fa-layer-group"></i>
+
+<span>Categories</span>
+
+</div>
+
+<div class="nav-item"
+onclick="window.location.href='orders.html'">
+
+<i class="fa-solid fa-bag-shopping"></i>
+
+<span>Orders</span>
+
+</div>
+
+<div class="nav-item"
+onclick="window.location.href='profile.html'">
+
+<i class="fa-solid fa-user"></i>
+
+<span>Profile</span>
+
+</div>
+
+</nav>
+<div id="toast" class="toast"></div>
+
+<script type="module"
+src="category-products.js">
+
+</script>
+
+</body>
+
+</html>

@@ -63,7 +63,7 @@ togglePassword.addEventListener("click", () => {
 });
 
 // AUTO LOGIN
-window.onload = () => {
+window.addEventListener("load", () => {
 
   const showLogin = localStorage.getItem("showLogin");
 
@@ -84,7 +84,7 @@ window.onload = () => {
 
   }
 
-};
+});
 
 // EMAIL LOGIN
 loginBtn.addEventListener("click", async () => {

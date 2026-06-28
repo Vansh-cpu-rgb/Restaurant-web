@@ -219,10 +219,12 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
 
-    document.querySelector(".loader").style.display = "none";
+    const loader = document.querySelector(".loader");
 
-    document.querySelector(".app").style.display = "block";
+    if(loader){
+      loader.style.display = "none";
+    }
 
-  }, 1800);
+  },1800);
 
 });

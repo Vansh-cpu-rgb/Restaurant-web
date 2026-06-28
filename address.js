@@ -1,3 +1,6 @@
+let userLatitude = "";
+let userLongitude = "";
+let googleMapLink = "";
 // GO BACK
 
 function goBack(){
@@ -8,40 +11,115 @@ function goBack(){
 
 // GET LOCATION
 
-function getLocation(){
+async function getLocation(){
 
-  const locationText =
+    const locationText =
     document.getElementById("locationText");
 
-  locationText.innerText =
-    "Fetching current location...";
+    const detectBtn =
+    document.getElementById("detectBtn");
 
-  if(navigator.geolocation){
+    locationText.innerText =
+    "Detecting your location...";
+
+    detectBtn.innerText = "Detecting...";
+
+    if(!navigator.geolocation){
+
+        locationText.innerText =
+        "Geolocation not supported";
+
+        detectBtn.innerText = "Detect";
+
+        return;
+
+    }
 
     navigator.geolocation.getCurrentPosition(
 
-      (position)=>{
+        async(position)=>{
 
-        locationText.innerText =
-          "Location detected successfully 😎";
+            userLatitude =
+            position.coords.latitude;
 
-      },
+            userLongitude =
+            position.coords.longitude;
 
-      ()=>{
+            googleMapLink =
+            `https://maps.google.com/?q=${userLatitude},${userLongitude}`;
 
-        locationText.innerText =
-          "Location access denied 😅";
+            try{
 
-      }
+                const res =
+                await fetch(
+                `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${userLatitude}&lon=${userLongitude}`
+                );
+
+                const data =
+                await res.json();
+
+                const addr =
+                data.address || {};
+
+                document.getElementById("address").value =
+                data.display_name || "";
+
+                document.getElementById("city").value =
+                addr.city ||
+                addr.town ||
+                addr.village ||
+                "";
+
+                const pin =
+                document.getElementById("pincode");
+
+                if(pin){
+
+                    pin.value =
+                    addr.postcode || "";
+
+                }
+
+                locationText.innerHTML =
+                "✅ Location Detected";
+
+                detectBtn.innerHTML =
+                '<i class="fa-solid fa-check"></i>';
+
+                detectBtn.style.background =
+                "#22c55e";
+
+            }
+
+            catch(err){
+
+                locationText.innerText =
+                "Unable to fetch address";
+
+                detectBtn.innerText =
+                "Detect";
+
+            }
+
+        },
+
+        ()=>{
+
+            locationText.innerText =
+            "Location Permission Denied";
+
+            detectBtn.innerText =
+            "Detect";
+
+        },
+
+        {
+
+            enableHighAccuracy:true
+
+        }
 
     );
-
-  }else{
-
-    locationText.innerText =
-      "Geolocation not supported";
-
-  }
 
 }
 
@@ -80,15 +158,24 @@ function saveAddress(){
 
   // SAVE DATA
 
-  const userAddress = {
+const userAddress = {
 
     fullName,
     phone,
     address,
     landmark,
-    city
+    city,
 
-  };
+    pincode:
+    document.getElementById("pincode").value,
+
+    latitude:userLatitude,
+
+    longitude:userLongitude,
+
+    googleMap:googleMapLink
+
+};
 
   localStorage.setItem(
 

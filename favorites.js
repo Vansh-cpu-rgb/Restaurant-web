@@ -84,6 +84,7 @@ setTimeout(()=>{
       name: product.name,
       price: product.price,
       image: product.image,
+      restaurantId: "rest_1782542247610",
       createdAt: Date.now()
     }
   );
