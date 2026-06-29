@@ -2752,3 +2752,328 @@ opacity:1;
 }
 
 }
+/* ===========================
+   3D VIEWER PAGE
+=========================== */
+
+.viewer-page{
+
+background:#0b0b0b;
+
+color:#fff;
+
+min-height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
+overflow:hidden;
+
+}
+
+.viewer-top{
+
+height:70px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 18px;
+
+background:rgba(255,255,255,.06);
+
+backdrop-filter:blur(20px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.viewer-top h2{
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
+.viewer-top button{
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+border-radius:50%;
+
+background:#1d1d1d;
+
+color:#fff;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.viewer-top button:hover{
+
+transform:scale(1.08);
+
+}
+
+.viewer-container{
+
+flex:1;
+
+position:relative;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+model-viewer{
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+
+180deg,
+
+#111,
+
+#000
+
+);
+
+}
+
+#viewerLoading{
+
+position:absolute;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+.loader3d{
+
+width:65px;
+
+height:65px;
+
+border-radius:50%;
+
+border:5px solid rgba(255,255,255,.15);
+
+border-top:5px solid #ff6b00;
+
+animation:spin3d 1s linear infinite;
+
+}
+
+@keyframes spin3d{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+#viewerLoading p{
+
+font-size:16px;
+
+color:#ddd;
+
+}
+
+.viewer-controls{
+
+padding:18px;
+
+display:flex;
+
+gap:12px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.viewer-controls button{
+
+padding:14px 18px;
+
+border:none;
+
+border-radius:16px;
+
+background:#202020;
+
+color:#fff;
+
+font-size:15px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.viewer-controls button:hover{
+
+background:#ff6b00;
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 25px rgba(255,107,0,.35);
+
+}
+
+#arBtn{
+
+background:#ff6b00;
+
+font-weight:700;
+
+}
+
+#arBtn:hover{
+
+background:#ff8124;
+
+}
+.viewer-glow{
+
+position:absolute;
+
+width:320px;
+
+height:320px;
+
+border-radius:50%;
+
+background:radial-gradient(
+
+circle,
+
+rgba(255,107,0,.35),
+
+transparent 70%
+
+);
+
+filter:blur(40px);
+
+animation:glowMove 6s ease-in-out infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes glowMove{
+
+0%{
+
+transform:translateY(-20px) scale(1);
+
+}
+
+50%{
+
+transform:translateY(20px) scale(1.15);
+
+}
+
+100%{
+
+transform:translateY(-20px) scale(1);
+
+}
+
+}
+.view3d-btn{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:8px;
+
+padding:12px 18px;
+
+border:none;
+
+border-radius:14px;
+
+background:linear-gradient(135deg,#ff6b00,#ff9800);
+
+color:#fff;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0 10px 25px rgba(255,107,0,.35);
+
+}
+
+.view3d-btn:hover{
+
+transform:translateY(-3px) scale(1.03);
+
+box-shadow:0 15px 35px rgba(255,107,0,.45);
+
+}
+
+.view3d-btn i{
+
+font-size:18px;
+
+animation:rotateCube 3s linear infinite;
+
+}
+
+@keyframes rotateCube{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}

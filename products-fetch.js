@@ -31,7 +31,9 @@ price: Number(data.price),
 
 image: data.image,
 
-desc: data.description
+desc: data.description,
+
+model3D: data.model3D || ""
 
 });
 
@@ -70,10 +72,11 @@ price: Number(data.price),
 
 image: data.image,
 
-desc: data.description
+desc: data.description,
+
+model3D: data.model3D || ""
 
 });
-
 });
 
 console.log(

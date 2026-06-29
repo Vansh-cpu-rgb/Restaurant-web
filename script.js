@@ -350,6 +350,33 @@ window.openPopup = function(id){
         window.loadProductReviews(product.id);
 
     }
+    const view3DBtn =
+document.getElementById("view3DBtn");
+
+if(product.model3D){
+
+view3DBtn.style.display = "flex";
+
+}else{
+
+view3DBtn.style.display = "none";
+
+}
+view3DBtn.onclick = () => {
+
+localStorage.setItem(
+"current3DModel",
+currentProduct.model3D
+);
+
+localStorage.setItem(
+"current3DName",
+currentProduct.name
+);
+
+window.location.href = "view3d.html";
+
+};
 
 };
 
