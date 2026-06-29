@@ -1,136 +1,174 @@
-const viewer =
-document.getElementById("viewer");
+// ===========================
+// ELEMENTS
+// ===========================
 
-const loading =
-document.getElementById("viewerLoading");
+const viewer = document.getElementById("viewer");
+const loading = document.getElementById("viewerLoading");
+const title = document.getElementById("viewerTitle");
 
-const title =
-document.getElementById("viewerTitle");
+const rotateBtn = document.getElementById("toggleRotate");
+const resetBtn = document.getElementById("resetView");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+const arBtn = document.getElementById("arBtn");
 
-const rotateBtn =
-document.getElementById("toggleRotate");
-
-const resetBtn =
-document.getElementById("resetView");
-
-const fullscreenBtn =
-document.getElementById("fullscreenBtn");
-
-const arBtn =
-document.getElementById("arBtn");
-
-// ======================
+// ===========================
 // LOAD MODEL
-// ======================
+// ===========================
 
-const model =
-localStorage.getItem("current3DModel");
-
-
-const modelName =
-localStorage.getItem("current3DName") || "3D Viewer";
+const model = localStorage.getItem("current3DModel");
+const modelName = localStorage.getItem("current3DName") || "3D Viewer";
 
 title.innerText = modelName;
 
-if(model){
+if (!model) {
+
+loading.innerHTML = `
+<i class="fa-solid fa-cube"
+style="font-size:70px;color:#ff6b00;"></i>
+
+<h2>No 3D Model</h2>
+
+<p>This product doesn't have a 3D model.</p>
+`;
+
+throw new Error("No model found");
+
+}
 
 viewer.src = model;
 
-}else{
-
-    loading.innerHTML = `
-
-    <i class="fa-solid fa-cube"
-    style="
-    font-size:70px;
-    color:#ff6b00;
-    "></i>
-
-    <h2>
-    3D Model Coming Soon
-    </h2>
-
-    <p>
-
-    This product doesn't have a
-    3D model yet.
-
-    </p>
-
-    `;
-
-}
-
-// ======================
+// ===========================
 // MODEL LOADED
-// ======================
+// ===========================
 
 viewer.style.opacity = "0";
 
-viewer.addEventListener("load",()=>{
+viewer.addEventListener("load", () => {
 
-loading.style.display="none";
+loading.style.display = "none";
 
-viewer.style.transition =
-"opacity .6s ease";
+viewer.style.transition = "opacity .5s";
 
 viewer.style.opacity = "1";
 
+// Camera Reset
+
+viewer.jumpCameraToGoal();
+
+viewer.cameraTarget = "auto auto auto";
+
+viewer.cameraOrbit = "0deg 75deg auto";
+
 });
 
-// ======================
-// AUTO ROTATE
-// ======================
+// ===========================
+// MODEL ERROR
+// ===========================
 
-let rotate = true;
+viewer.addEventListener("error", () => {
 
-rotateBtn.onclick=()=>{
+loading.innerHTML = `
 
-rotate = !rotate;
+<i class="fa-solid fa-circle-exclamation"
+style="font-size:70px;color:red;"></i>
 
-viewer.autoRotate = rotate;
+<h2>Failed To Load</h2>
+
+<p>
+
+Model URL is invalid
+or GitHub cannot access it.
+
+</p>
+
+`;
+
+});
+
+// ===========================
+// ROTATE
+// ===========================
+
+let rotating = true;
+
+rotateBtn.onclick = () => {
+
+rotating = !rotating;
+
+viewer.autoRotate = rotating;
 
 rotateBtn.style.background =
-rotate ? "#ff6b00" : "#202020";
+rotating ? "#ff6b00" : "#202020";
 
 };
 
-// ======================
+// ===========================
 // RESET CAMERA
-// ======================
+// ===========================
 
-resetBtn.onclick=()=>{
+resetBtn.onclick = () => {
 
-viewer.cameraOrbit =
+viewer.jumpCameraToGoal();
 
-"0deg 75deg auto";
+viewer.cameraTarget = "auto auto auto";
+
+viewer.cameraOrbit = "0deg 75deg auto";
 
 };
 
-// ======================
+// ===========================
 // FULLSCREEN
-// ======================
+// ===========================
 
-fullscreenBtn.onclick=()=>{
+fullscreenBtn.onclick = () => {
 
-if(document.fullscreenElement){
+if (!document.fullscreenElement) {
+
+document.documentElement.requestFullscreen();
+
+} else {
 
 document.exitFullscreen();
-
-}else{
-
-viewer.requestFullscreen();
 
 }
 
 };
 
-// ======================
-// AR BUTTON
-// ======================
+// ===========================
+// AR
+// ===========================
 
-arBtn.onclick=()=>{
+arBtn.onclick = () => {
 
 viewer.activateAR();
 
 };
+
+// ===========================
+// EXTRA SAFETY
+// ===========================
+
+// Agar 10 second me load na ho
+
+setTimeout(() => {
+
+if (loading.style.display !== "none") {
+
+loading.innerHTML = `
+
+<i class="fa-solid fa-triangle-exclamation"
+style="font-size:65px;color:#ff9800;"></i>
+
+<h2>Still Loading...</h2>
+
+<p>
+
+Check your GLB file URL.
+
+</p>
+
+`;
+
+}
+
+},10000);
